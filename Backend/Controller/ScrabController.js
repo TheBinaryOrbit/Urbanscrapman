@@ -31,8 +31,10 @@ export const UpdateScrabData = async (req,res)=>{
 
 export const getRates = async (req,res)=>{
     try{
+        console.log("getting scrabs")
         const result = await scrab.find({});
         if(!result) return res.status(500).json({ "error"  : "Error in Getting Pickups"});
+        console.log(result)
         return res.status(200).json(result);
     }catch(e){
         console.log(e)

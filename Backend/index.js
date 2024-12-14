@@ -1,7 +1,7 @@
 import express from 'express'
 import 'dotenv/config'
 import { ConnectDB } from './Database/Dbconnection.js'
-import { route as SheduleRouter } from './Router/Shedulerouter.js'
+import { route as SheduleRouter } from './Router/SheduleRouter.js'
 import { route as ScrabRouter } from './Router/Scrabrouter.js'
 import { route as UserRouter } from './Router/UserRouter.js'
 const PORT = process.env.PORT
@@ -10,7 +10,7 @@ const app = express()
 
 
 app.get('/' , (req,res)=>{   
-    res.end("Happy Backend");
+    res.json({"mess" : "Happy Backend"});
 })
 
 app.use(express.urlencoded({ extended : false}));

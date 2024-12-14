@@ -42,7 +42,9 @@ export const getAllShedules =async (req,res)=>{
 
 export const getPersonalShedule = async (req,res)=>{
     try{
+        console.log(req.params.id)
         const result = await shedule.find({createdBy : req.params.id});
+        console.log(result)
         if(!result) return res.status(500).json({ "error"  : "Error in Getting Pickups"});
         return res.status(200).json(result);
     }catch(e){
