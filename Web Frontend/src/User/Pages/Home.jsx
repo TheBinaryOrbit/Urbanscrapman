@@ -1,27 +1,23 @@
-import React from 'react'
-import Hero from '../Component/Home/Hero'
-import About from '../Component/Home/About'
-import Ourpatners from '../Component/Home/Ourpatners'
-import Ourprocess from '../Component/Home/Ourprocess'
-import Chatbot from '../Component/Not Used/Chatbot'
-import Contact from '../Component/Home/Conatct'
-import SchedulePickupForm from '../Component/Home/SchedulePickupForm'
-import WorkFlow from '../Component/Home/WorkFlow'
-import WhyUs from '../Component/Home/WhyUs'
-import WhatsApp from '../Component/Icons/Whatsapp'
+import React, { lazy } from 'react'
+const Hero = lazy(()=> import('../Component/Home/Hero'))
+const About = lazy(() => import('../Component/Home/About') )
+const Contact = lazy(()=> import('../Component/Home/Conatct'))
+const SchedulePickupForm = lazy(()=> import('../Component/Home/SchedulePickupForm'))
+const WorkFlow = lazy(() => import('../Component/Home/WorkFlow'))
+const WhyUs = lazy(()=> import('../Component/Home/WhyUs'))
+const WhatsApp = lazy(()=> import('../Component/Icons/Whatsapp'))
+const Services = lazy(()=> import('../Component/Home/Services'))
 
 const Home = () => {
   return (
     <>
         <Hero />
         <SchedulePickupForm />
+        <Services />
         <WorkFlow />
         <About  />
         <WhyUs />
         <WhatsApp />
-        {/* <Ourpatners /> */}
-        {/* <Chatbot /> */}
-        {/* <Ourprocess /> */}
         <Contact />
     </>
   )

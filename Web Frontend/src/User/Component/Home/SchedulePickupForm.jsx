@@ -4,24 +4,24 @@ import phone from '../../../assets/phone.jpg'
 
 const SchedulePickupForm = () => {
   const navigate = useNavigate()
-  const [formData, setFormData] = useState({
-    date: "",
-    time: "",
-    address: "",
-    weight: "",
-    remarks: "",
-  });
+  // const [formData, setFormData] = useState({
+  //   date: "",
+  //   time: "",
+  //   address: "",
+  //   weight: "",
+  //   remarks: "",
+  // });
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
+  // const handleChange = (e) => {
+  //   const { name, value } = e.target;
+  //   setFormData({ ...formData, [name]: value });
+  // };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Form Data Submitted:", formData);
-    alert("Pickup Scheduled!");
-  };
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   console.log("Form Data Submitted:", formData);
+  //   alert("Pickup Scheduled!");
+  // };
 
   return (
     <section class="pt-24 relative xl:mr-0 lg:mr-5 mr-0">
@@ -111,18 +111,18 @@ const SchedulePickupForm = () => {
               </div>
             </div>
             <button
-              class="sm:w-fit w-full group px-3.5 py-2 bg-green-50 hover:bg-green-100 rounded-lg shadow-[0px_1px_2px_0px_rgba(16,_24,_40,_0.05)] transition-all duration-700 ease-in-out justify-center items-center flex cursor-pointer" onClick={() => navigate('/rates')}>
+              class="sm:w-fit w-full group px-3.5 py-2 bg-green-600 hover:bg-green-700 rounded-lg shadow-[0px_1px_2px_0px_rgba(16,_24,_40,_0.05)] transition-all duration-700 ease-in-out justify-center items-center flex cursor-pointer">
               <span
-                class="px-1.5 text-green-600 text-sm font-medium leading-6 group-hover:-translate-x-0.5 transition-all duration-700 ease-in-out">Explore Rates</span>
+                class="px-1.5 text-white text-sm font-medium leading-6 group-hover:-translate-x-0.5 transition-all duration-700 ease-in-out">Get The App Now</span>
               <svg class="group-hover:translate-x-0.5 transition-all duration-700 ease-in-out"
                 xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
-                <path d="M6.75265 4.49658L11.2528 8.99677L6.75 13.4996" stroke="#16A34A" stroke-width="1.6"
+                <path d="M6.75265 4.49658L11.2528 8.99677L6.75 13.4996" stroke="#ffffff" stroke-width="1.6"
                   stroke-linecap="round" stroke-linejoin="round" />
               </svg>
             </button>
           </div>
-          <div className="min-h-screen flex flex-col items-center justify-center ">
-          <img src={phone} alt="" className=" scale-110" />
+          <div className="min-h-fit md:min-h-screen flex flex-col items-center justify-center ">
+          <img src={phone} alt="" className="md:scale-110" />
             {/* <form
               onSubmit={handleSubmit}
               className="bg-white p-6 rounded-lg shadow-md w-full max-w-md"

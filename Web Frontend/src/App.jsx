@@ -8,7 +8,7 @@ import Singup from './Auth/Singup'
 import User from './Outlets/User'
 import { useEffect, useState } from 'react'
 import { Authcontext } from './Auth/Authcontext'
-import { ToastContainer, Bounce } from 'react-toastify'
+import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 import Cookies from 'js-cookie'
 import useIsAdmin from './Hooks/useIsAdmin'
@@ -52,7 +52,7 @@ function App() {
             <Route path='/' element={<Home />} />
             <Route path='/rates' element={<Rates />} />
             <Route path='/shedules' element={<Shedules />} />
-            <Route path='/pickups' element={<Pickup />} />
+            {/* <Route path='/pickups' element={<Pickup />} /> */}
             <Route path='/faq' element={<Faq />} />
             <Route path='*' element={<NotFound />} />
           </Route>

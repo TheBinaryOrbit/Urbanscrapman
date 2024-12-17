@@ -5,6 +5,7 @@ import { IoMdAdd } from "react-icons/io";
 import { RxCross2 } from 'react-icons/rx';
 import { TbLoader3 } from 'react-icons/tb';
 import useIsAdmin from '../Hooks/useIsAdmin';
+import URL from '../Url';
 
 const Scrabs = () => {
     const [isprocessing, setIsprocessing] = useState(false);
@@ -25,7 +26,7 @@ const Scrabs = () => {
     useEffect(() => {
         const fetchdata = async () => {
             try {
-                const res = await axios.get('http://localhost:8000/api/v1/urbanscrapman/scrab/getrates');
+                const res = await axios.get(`${URL}/api/v1/urbanscrapman/scrab/getrates`);
                 setData(res.data);
             } catch (e) {
                 setError(true);
@@ -61,7 +62,7 @@ const Scrabs = () => {
         const details = { ...scrabDetails };
 
         try {
-            const res = await axios.post('http://localhost:8000/api/v1/urbanscrapman/scrab/addscrab', details, {
+            const res = await axios.post(`${URL}/api/v1/urbanscrapman/scrab/addscrab`, details, {
                 headers: { "Authorization": "Bearer " + adminData.token }
             });
 
@@ -84,7 +85,7 @@ const Scrabs = () => {
         if (!scrabDetails.name || !scrabDetails.price || !scrabDetails.unit || !scrabDetails.icon) return alert('All Fields Are Required');
 
         try {
-            const res = await axios.patch(`http://localhost:8000/api/v1/urbanscrapman/scrab/updatescrab/${activeId}`, scrabDetails, {
+            const res = await axios.patch(`${URL}/api/v1/urbanscrapman/scrab/updatescrab/${activeId}`, scrabDetails, {
                 headers: { "Authorization": "Bearer " + adminData.token }
             });
 

@@ -6,10 +6,10 @@ import { FaMoneyBillWave ,FaHandshake ,FaLeaf } from "react-icons/fa";
 
 const WhyUs = () => {
     return (
-        <section class="py-20">
+        <section class="sm:py-20">
             <div class="mx-auto max-w-full md:px-24 px-3 ">
                 <div
-                    class="rounded-2xl py-10 px-10 xl:py-16 xl:px-20 bg-gray-50 flex items-center justify-between flex-col gap-16 lg:flex-row shadow-xl">
+                    class="rounded-2xl py-10 px-10 xl:py-16 xl:px-20 bg-gray-50 flex items-center justify-between flex-col gap-16 lg:flex-row sm:shadow-xl">
                     <div class="w-full lg:w-60">
                         <h2
                             class="font-manrope text-4xl font-bold text-gray-900 mb-4 text-center lg:text-left"

@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import image from '../assets/Contact.jpg'
 import { toast , Bounce} from 'react-toastify';
 import useIsLoggedIn from '../Hooks/useIsLoggedIn';
+import URL from '../Url';
 const Singup = () => {
     const navigate = useNavigate()
     const loogedIn = useIsLoggedIn()
@@ -55,7 +56,7 @@ const Singup = () => {
         }
     
         try{
-          const res = await axios.post(`http://localhost:8000/api/v1/urbanscrapman/user/singup` , details)
+          const res = await axios.post(`${URL}/api/v1/urbanscrapman/user/singup` , details)
           console.log(res)
           if(res.status == 201 ){
             navigate('/login')

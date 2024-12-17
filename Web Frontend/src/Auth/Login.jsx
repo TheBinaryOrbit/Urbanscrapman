@@ -7,6 +7,7 @@ import { Authcontext } from './Authcontext';
 import { toast, Bounce } from 'react-toastify';
 import Cookies from 'js-cookie';
 import useIsLoggedIn from '../Hooks/useIsLoggedIn';
+import URL from '../Url';
 
 const Login = () => {
   const { isLogedIn, setIsLogedIn } = useContext(Authcontext)
@@ -57,7 +58,7 @@ const Login = () => {
     }
 
     try {
-      const res = await axios.post(`http://localhost:8000/api/v1/urbanscrapman/user/login`, details)
+      const res = await axios.post(`${URL}/api/v1/urbanscrapman/user/login`, details)
       console.log(res)
       if (res.status === 200) {
         setIsLogedIn(true)

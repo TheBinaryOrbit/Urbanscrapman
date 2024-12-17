@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios';
-
+import URL from '../../Url';
 const Rates = () => {
     const [data, setData] = useState([]);
     const [error , setError] = useState(false)
     useEffect(() => {
         const fetchdata = async () => {
             try {
-                const res = await axios.get('http://localhost:8000/api/v1/urbanscrapman/scrab/getrates');
+                const res = await axios.get(`${URL}/api/v1/urbanscrapman/scrab/getrates`);
                 setData(res.data);
             } catch (e) {
                 setError(true);

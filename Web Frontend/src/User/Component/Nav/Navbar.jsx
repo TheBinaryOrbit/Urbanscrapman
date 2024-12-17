@@ -16,7 +16,7 @@ import { GrContact } from "react-icons/gr";
 
 const Navbar = () => {
     const isloggedIn = useIsLoggedIn()
-    const [isAdmin , admindata] = useIsAdmin()
+    const [isAdmin, admindata] = useIsAdmin()
     const navigate = useNavigate()
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isOptionsOpen, setIsOptionsOpen] = useState(false)
@@ -86,12 +86,7 @@ const Navbar = () => {
                                 </NavLink>
                             </li>
                             <li>
-                                <a
-                                    // to={'/#about'}
-                                    className="bg-green-100  rounded-full cursor-pointer font-semibold text-center shadow-xs transition-all duration-500 py-3 px-6 text-sm hover:bg-green-100"
-
-                                    onClick={() => isMenuOpen ? toggleMenu : ""}
-                                >
+                                <a className={`flex justify-center items-center border border-green-100 p-2 rounded-3xl cursor-pointer relative bg-green-100 mb-2 md:mb-0 font-medium px-3 text-sm`}>
                                     Get App
                                 </a>
                             </li>
@@ -109,7 +104,7 @@ const Navbar = () => {
                                                 </div>
                                                 {
                                                     isOptionsOpen ?
-                                                        <ul className={`flex flex-col absolute top-[130%] right-0 bg-white p-3 z-50 rounded-lg px-5 justify-start items-start border border-gray-300 w-${isMenuOpen ? 'full' : 'fit'}`}>
+                                                        <ul className={`flex flex-col absolute top-[130%] right-0 bg-white p-3 z-50 rounded-lg px-5 justify-start items-start border  border-gray-300 w-${isMenuOpen ? 'full' : 'fit'}`}>
                                                             {
                                                                 isAdmin ?
                                                                     <li className='mb-2'>
@@ -138,7 +133,7 @@ const Navbar = () => {
                                                                     <div className='h-[100%] translate-y-[1px]'>
                                                                         <FaChartSimple size={18} />
                                                                     </div>
-                                                                    <div className='capitalize' >
+                                                                    <div className='capitalize text-nowrap' >
                                                                         About Us
                                                                     </div>
                                                                 </HashLink>
@@ -152,10 +147,23 @@ const Navbar = () => {
                                                                     <div className='h-[100%] translate-y-[1px]'>
                                                                         <GrContact size={18} />
                                                                     </div>
-                                                                    <div className=' capitalize' >
+                                                                    <div className=' capitalize text-nowrap' >
                                                                         Contact Us
                                                                     </div>
                                                                 </HashLink>
+                                                            </li>
+                                                            <li className=''>
+                                                                <p
+                                                                    className="nav-link  lg:mr-6 my-3 md:my-0 lg:text-left text-center font-medium flex justify-center items-center gap-2  w-fit"
+                                                                    onClick={() => navigate('/shedules')}
+                                                                >
+                                                                    <div className='h-[100%] translate-y-[1px]'>
+                                                                        <CiDeliveryTruck size={18} />
+                                                                    </div>
+                                                                    <div className='capitalize text-nowrap' >
+                                                                        Shedule
+                                                                    </div>
+                                                                </p>
                                                             </li>
                                                             <li className=''>
                                                                 <p
@@ -165,11 +173,12 @@ const Navbar = () => {
                                                                     <div className='h-[100%] translate-y-[1px]'>
                                                                         <MdLogout size={18} />
                                                                     </div>
-                                                                    <div className=' capitalize' >
+                                                                    <div className=' capitalize text-nowrap' >
                                                                         Logout
                                                                     </div>
                                                                 </p>
                                                             </li>
+                                                            
                                                         </ul> :
                                                         ""
                                                 }

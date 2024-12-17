@@ -5,6 +5,7 @@ import { RxCross2 } from 'react-icons/rx';
 import { TbLoader3 } from 'react-icons/tb';
 import axios from 'axios';
 import useIsAdmin from '../Hooks/useIsAdmin';
+import URL from '../Url';
 
 const AllShedules = () => {
   const [isprocessing, setIsprocessing] = useState(false)
@@ -18,6 +19,7 @@ const AllShedules = () => {
   const [page, setPage] = useState(1)
   const [limit, setLimit] = useState(10)
 
+
   const handleopen = (data) => {
     setActiveData(data)
     setIsOpen(!isOpen);
@@ -26,7 +28,7 @@ const AllShedules = () => {
   const handleUpdateStatus = async () => {
     setIsprocessing(true);
     try {
-      const res = await axios.patch(`http://localhost:8000/api/v1/urbanscrapman/shedule/updatestatus/${activeData._id}`, { "body": "nothhing" }, {
+      const res = await axios.patch(`${URL}/api/v1/urbanscrapman/shedule/updatestatus/${activeData._id}`, { "body": "nothhing" }, {
         headers: { "Authorization": "Bearer " + adminData.token }
       });
 
@@ -46,7 +48,7 @@ const AllShedules = () => {
   useEffect(() => {
     const fetchdata = async () => {
       try {
-        const res = await axios.get(`http://localhost:8000/api/v1/urbanscrapman/shedule/getallshedule?page=${page}&limit=${limit}&option=${option}`, {
+        const res = await axios.get(`${URL}/api/v1/urbanscrapman/shedule/getallshedule?page=${page}&limit=${limit}&option=${option}`, {
           headers: { "Authorization": "Bearer " + adminData.token }
         });
         console.log(res.data);
