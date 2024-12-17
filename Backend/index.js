@@ -1,5 +1,6 @@
 import express from 'express'
 import 'dotenv/config'
+import cors from 'cors'
 import { ConnectDB } from './Database/Dbconnection.js'
 import { route as SheduleRouter } from './Router/SheduleRouter.js'
 import { route as ScrabRouter } from './Router/Scrabrouter.js'
@@ -8,6 +9,14 @@ const PORT = process.env.PORT
 
 const app = express()
 
+const corsOption  = {
+    "origin": "*",
+    "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
+    "preflightContinue": false,
+    "optionsSuccessStatus": 204
+  }
+
+app.use(cors(corsOption))
 
 app.get('/' , (req,res)=>{   
     res.json({"mess" : "Happy Backend"});

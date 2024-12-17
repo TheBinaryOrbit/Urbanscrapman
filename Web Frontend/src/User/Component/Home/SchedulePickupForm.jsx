@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import phone from '../../../assets/phone.jpg'
 
 const SchedulePickupForm = () => {
   const navigate = useNavigate()
@@ -121,13 +122,14 @@ const SchedulePickupForm = () => {
             </button>
           </div>
           <div className="min-h-screen flex flex-col items-center justify-center ">
-            <form
+          <img src={phone} alt="" className=" scale-110" />
+            {/* <form
               onSubmit={handleSubmit}
               className="bg-white p-6 rounded-lg shadow-md w-full max-w-md"
             >
               <h2 className="text-2xl font-semibold mb-4">Schedule a Pickup</h2>
 
-              {/* Date Field */}
+              
               <label className="block text-sm font-medium text-gray-700 mb-1">
                 Enter Date
               </label>
@@ -139,7 +141,7 @@ const SchedulePickupForm = () => {
                 className="w-full mb-4 p-2 border border-gray-300 rounded focus:ring-2 focus:ring-green-400"
               />
 
-              {/* Time Field */}
+              
               <label className="block text-sm font-medium text-gray-700 mb-1">
                 Enter Time
               </label>
@@ -151,7 +153,7 @@ const SchedulePickupForm = () => {
                 className="w-full mb-4 p-2 border border-gray-300 rounded focus:ring-2 focus:ring-green-400"
               />
 
-              {/* Address Field */}
+              
               <label className="block text-sm font-medium text-gray-700 mb-1">
                 Select an Address
               </label>
@@ -166,7 +168,7 @@ const SchedulePickupForm = () => {
                 <option value="Office">Office</option>
               </select>
 
-              {/* Weight Field */}
+
               <label className="block text-sm font-medium text-gray-700 mb-1">
                 Estimated Weight
               </label>
@@ -182,7 +184,7 @@ const SchedulePickupForm = () => {
                 <option value="10kg+">10kg+</option>
               </select>
 
-              {/* Remarks Field */}
+              
               <label className="block text-sm font-medium text-gray-700 mb-1">
                 Remarks (Optional)
               </label>
@@ -194,14 +196,14 @@ const SchedulePickupForm = () => {
                 placeholder="Add any remarks..."
               />
 
-              {/* Submit Button */}
+
               <button
                 type="submit"
                 className="w-full bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 transition"
               >
                 Schedule a Pickup
               </button>
-            </form>
+            </form> */}
           </div>
         </div>
       </div>

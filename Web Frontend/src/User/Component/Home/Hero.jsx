@@ -1,10 +1,10 @@
 import React from 'react';
-import video from '../assets/Video.mp4';
+import video from '../../../assets/Video.mp4';
 
 const Hero = () => {
     return (
         <section
-            className="relative  h-[95vh]  bg-center bg-cover flex items-center justify-center"
+            className="relative  h-[100vh]  bg-center bg-cover flex items-center justify-center"
         >
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative text-center">
                 <div

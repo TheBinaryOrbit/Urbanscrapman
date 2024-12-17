@@ -30,7 +30,18 @@ export const UpdateStatus = async (req,res)=>{
 
 export const getAllShedules =async (req,res)=>{
     try{
-        const result = await shedule.find({});
+        console.log(req.query)
+        let result = []
+        if(req.query.option == 'all') {
+            console.log('all')
+            result = await shedule.find({}).limit(req.query.limit).skip((+req.query.page-1)*(+req.query.limit)).populate('createdBy');
+        }
+        else{
+            console.log('options')
+            result = await shedule.find({ status : req.query.option }).limit(req.query.limit).skip((+req.query.page-1)*(+req.query.limit)).populate('createdBy');
+        }
+
+        console.log(result)
         if(!result) return res.status(500).json({ "error"  : "Error in Getting Pickups"});
         return res.status(200).json(result);
     }catch(e){

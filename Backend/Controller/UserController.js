@@ -36,7 +36,7 @@ export const handleLogin = async (req, res) => {
         return res.status(200).json({ token: token, name: result.name, phoneNumber: result.phoneNumber, role: result.role, id: result._id});
     } catch (e) {
         console.log(e);
-        return res.status(400).json({ error: "not found" });
+        return res.status(400).json({ error: e });
     }
 }
 

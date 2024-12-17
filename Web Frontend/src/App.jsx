@@ -1,23 +1,70 @@
 import './App.css'
-import Footer from './Component/Footer'
-import Hero from './Component/Hero'
-import Home from './Component/Home'
-import Navbar from './Component/Navbar'
-import { BrowserRouter as Router , Routes , Route } from 'react-router-dom'
-import Pricing from './Component/Pricing'
-import Rates from './Component/Rates'
+import Home from './User/Pages/Home'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import Rates from './User/Pages/Rates'
+import Login from './Auth/Login'
+import NotFound from './User/Pages/NotFound'
+import Singup from './Auth/Singup'
+import User from './Outlets/User'
+import { useEffect, useState } from 'react'
+import { Authcontext } from './Auth/Authcontext'
+import { ToastContainer, Bounce } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
+import Cookies from 'js-cookie'
+import useIsAdmin from './Hooks/useIsAdmin'
+import Shedules from './User/Pages/Shedules'
+import Pickup from './User/Pages/Pickup'
+import Admin from './Outlets/Admin'
+import AllShedules from './Admin/AllShedules'
+import Scrabs from './Admin/Scrabs'
+import ScrollToTop from './User/Component/ScrollToTop/ScrollToTop'
+import Faq from './User/Pages/Faq'
+
+
 
 function App() {
+  const IsAdmin = useIsAdmin()
+  const [isLogedIn, setIsLogedIn] = useState(Cookies.get('isloggedIn') || false)
+
+  useEffect(()=>{
+    console.log(IsAdmin)
+    setIsLogedIn(Cookies.get('isloggedIn') || false)
+  },[isLogedIn])
+
   return (
-    <Router>
-    <Navbar />
-      <Routes>
-        <Route path='/' element={<Home />} />
-        {/* <Route path='pricing' element={<Pricing />} /> */}
-        <Route path='/rates' element={<Rates />}/>
-      </Routes>
-      <Footer />
-    </Router>
+    <Authcontext.Provider value={{isLogedIn , setIsLogedIn}}>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        draggable
+        pauseOnHover
+        theme="light"
+        />
+      <ToastContainer />
+      <Router>
+      <ScrollToTop />
+        <Routes>
+          <Route path='/' element={<User />}>
+            <Route path='/' element={<Home />} />
+            <Route path='/rates' element={<Rates />} />
+            <Route path='/shedules' element={<Shedules />} />
+            <Route path='/pickups' element={<Pickup />} />
+            <Route path='/faq' element={<Faq />} />
+            <Route path='*' element={<NotFound />} />
+          </Route>
+          <Route path='login' element={<Login />} />
+          <Route path='singup' element={<Singup />} />
+          <Route path='/admin' element={<Admin />}>
+            <Route path='/admin/shedule' element={<AllShedules />} />
+            <Route path='/admin/scrabs' element={<Scrabs />} />
+          </Route>
+        </Routes>
+      </Router>
+    </Authcontext.Provider>
   )
 }
 

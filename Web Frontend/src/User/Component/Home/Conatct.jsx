@@ -1,14 +1,15 @@
 import React ,{ useState }from 'react'
+import image from '../../../assets/Contact.jpg'
 
 const Contact = () => {
     return (
-        <section class="md:pt-10 md:pb-10 mb-10 sm:mb-0 bg-gradient-to-b from-white via-white via-[25%] to-[#E3F2F5] sm:bg-custom-gradient" id='contact'>
-            <div class="mx-auto max-w-full md:px-28 px-3">
+        <section class="md:pt-10 md:pb-10  sm:mb-0 bg-gradient-to-b from-white via-white via-[25%] to-[#E3F2F5] sm:bg-custom-gradient" id='contact'>
+            <div class="mx-auto max-w-full md:px-24 px-3">
                 <div class="grid lg:grid-cols-2 grid-cols-1">
                     <div class="lg:mb-0 mb-10">
                         <div class="group w-full  h-full rounded-l-2xl">
                             <div class="relative  h-full md:block hidden rounded-l-2xl">
-                                <img src="https://t4.ftcdn.net/jpg/09/27/18/53/360_F_927185305_P75TaT8gL3xpYSJncvjQmwcCCHoREKEK.jpg" alt="ContactUs tailwind section" class="w-full h-full  bg-blend-multiply  object-cover rounded-l-2xl" />
+                                <img src={image} alt="ContactUs tailwind section" class="w-full h-full  bg-blend-multiply  object-cover rounded-l-2xl" />
                                 <div class="absolute bottom-0 w-full lg:p-11 p-5">
                                     <div class="bg-white rounded-lg p-6 block">
                                         <a href="javascript:;" class="flex items-center mb-6">
