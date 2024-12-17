@@ -1,2 +1,2 @@
-const URL = 'http://localhost:8000'
+const URL = 'https://urbanscrapman-production.up.railway.app'
 export default URL
