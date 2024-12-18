@@ -35,6 +35,6 @@ const SheduleSchema = new  mongoose.Schema({
         ref : 'user',
         required : true
     }
-})
+} , {timestamps : true})
 
 export const shedule = mongoose.model('shedule' , SheduleSchema)

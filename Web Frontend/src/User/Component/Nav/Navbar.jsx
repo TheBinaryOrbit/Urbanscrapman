@@ -164,9 +164,9 @@ const Navbar = () => {
                                                                 </HashLink>
                                                             </li>
                                                             <li className=''>
-                                                                <p
+                                                                <HashLink
+                                                                    to={'/#shedules'}
                                                                     className="nav-link  lg:mr-6 my-3 md:my-0 lg:text-left text-center font-medium flex justify-center items-center gap-2  w-fit"
-                                                                    onClick={() => navigate('/shedules')}
                                                                 >
                                                                     <div className='h-[100%] translate-y-[1px]'>
                                                                         <CiDeliveryTruck size={18} />
@@ -174,7 +174,7 @@ const Navbar = () => {
                                                                     <div className='capitalize text-nowrap' >
                                                                         Shedule
                                                                     </div>
-                                                                </p>
+                                                                </HashLink>
                                                             </li>
                                                             <li className=''>
                                                                 <p

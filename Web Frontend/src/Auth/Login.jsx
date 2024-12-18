@@ -65,7 +65,7 @@ const Login = () => {
         Cookies.set('isloggedIn', true, { path: '/', expires: 30 });
         Cookies.set('user', JSON.stringify(res.data), { path: '/', expires: 30 });
         navigate('/')
-        return toast.success('Account Created SucessFully', {
+        return toast.success('Loggedin SucessFully', {
           position: "top-right",
           autoClose: 5000,
           hideProgressBar: false,

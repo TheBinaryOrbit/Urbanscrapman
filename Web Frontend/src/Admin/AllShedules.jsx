@@ -11,6 +11,7 @@ import { toast , Bounce } from 'react-toastify';
 const AllShedules = () => {
   const [isprocessing, setIsprocessing] = useState(false)
   const [products, setProducts] = useState([]);
+  const [data, setData] = useState([]);
   const [error, setError] = useState(false);
   const [IsAdmin, adminData] = useIsAdmin();
   const [option, setOptions] = useState('all')
@@ -72,7 +73,6 @@ const AllShedules = () => {
         const res = await axios.get(`${URL}/api/v1/urbanscrapman/shedule/getallshedule?page=${page}&limit=${limit}&option=${option}`, {
           headers: { "Authorization": "Bearer " + adminData.token }
         });
-        console.log(res.data);
         setProducts(res.data);
       } catch (e) {
         setError(true);
@@ -81,6 +81,23 @@ const AllShedules = () => {
     };
     fetchdata();
   }, [chnaged , limit , page , option]);
+
+
+  useEffect(() => {
+    const fetchdata = async () => {
+      try {
+        const res = await axios.get(`${URL}/api/v1/urbanscrapman/shedule/getstatics`, {
+          headers: { "Authorization": "Bearer " + adminData.token }
+        });
+        console.log(res.data);
+        setData(res.data)
+      } catch (e) {
+        setError(true);
+        console.log(e);
+      }
+    };
+    fetchdata();
+  }, []);
 
 
   return (
@@ -95,19 +112,19 @@ const AllShedules = () => {
         <div className='w-full py-6 flex flex-wrap items-center justify-center gap-5 shadow-lg px-4'>
           <div className='w-full sm:w-64 h-28 bg-gradient-to-r from-red-500 to-red-400 rounded-2xl flex flex-col justify-center items-start p-5 shadow-md'>
             <h1 className='text-xl font-bold text-white tracking-[1px]'>Total Schedules</h1>
-            <h1 className='text-2xl font-bold text-white'>566</h1>
+            <h1 className='text-2xl font-bold text-white'>{data.totalSchedules}</h1>
           </div>
           <div className='w-full sm:w-64 h-28 bg-gradient-to-r from-pink-500 to-pink-400 rounded-2xl flex flex-col justify-center items-start p-5 shadow-md'>
-            <h1 className='text-xl font-bold text-white tracking-[1px]'>Total Weight</h1>
-            <h1 className='text-2xl font-bold text-white'>1120</h1>
+            <h1 className='text-xl font-bold text-white tracking-[1px]'>Total Completed</h1>
+            <h1 className='text-2xl font-bold text-white'>{data.totalCompleted}</h1>
           </div>
           <div className='w-full sm:w-64 h-28 bg-gradient-to-r from-green-500 to-green-400 rounded-2xl flex flex-col justify-center items-start p-5 shadow-md'>
-            <h1 className='text-xl font-bold text-white tracking-[1px]'>Total Scraps</h1>
-            <h1 className='text-2xl font-bold text-white'>120</h1>
+            <h1 className='text-xl font-bold text-white tracking-[1px]'>Today's Schedules</h1>
+            <h1 className='text-2xl font-bold text-white'>{data.totalToday}</h1>
           </div>
           <div className='w-full sm:w-64 h-28 bg-gradient-to-r from-yellow-500 to-yellow-400 rounded-2xl flex flex-col justify-center items-start p-5 shadow-md'>
-            <h1 className='text-xl font-bold text-white tracking-[1px]'>Pickups Confirmed</h1>
-            <h1 className='text-2xl font-bold text-white'>340</h1>
+            <h1 className='text-xl font-bold text-white tracking-[1px]'>Total Upcoming</h1>
+            <h1 className='text-2xl font-bold text-white'>{data.totalUpcoming}</h1>
           </div>
         </div>
 
@@ -156,7 +173,7 @@ const AllShedules = () => {
                     </tr>
                   ) : (
                     products?.map((product) => (
-                      <tr key={product.id} className="border-b hover:bg-gray-50 transition">
+                      <tr key={product._id} className="border-b hover:bg-gray-50 transition">
                         <td className="py-3 px-4">{product.createdBy?.name}</td>
                         <td className="py-3 px-4">+91 {product.createdBy?.phoneNumber}</td>
                         <td className="py-3 px-4">{product.weight}</td>

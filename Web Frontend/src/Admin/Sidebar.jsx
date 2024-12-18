@@ -93,7 +93,7 @@ const Sidebar = () => {
                                                 </g>
                                             </svg>
                                         </div>
-                                        <h2 className="text-gray-500 text-sm font-medium">Scrabs</h2>
+                                        <h2 className="text-gray-500 text-sm font-medium">Scraps</h2>
                                     </div>
                                 </div>
                             </NavLink>

@@ -7,12 +7,14 @@ const WorkFlow = lazy(() => import('../Component/Home/WorkFlow'))
 const WhyUs = lazy(()=> import('../Component/Home/WhyUs'))
 const WhatsApp = lazy(()=> import('../Component/Icons/Whatsapp'))
 const Services = lazy(()=> import('../Component/Home/Services'))
+const Shedules = lazy(()=> import('./Shedules'))
 
 const Home = () => {
   return (
     <>
         <Hero />
         <SchedulePickupForm />
+        <Shedules />
         <Services />
         <WorkFlow />
         <About  />
