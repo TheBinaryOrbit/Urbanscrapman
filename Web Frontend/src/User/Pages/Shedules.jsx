@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import phone from '../../assets/phone.jpg'
 import axios from 'axios';
 import useIsLoggedIn from '../../Hooks/useIsLoggedIn';
 import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import URL from '../../Url';
+import { toast, Bounce } from 'react-toastify';
+import { Authcontext } from '../../Auth/Authcontext';
 
 const SchedulePickup = () => {
-  const isloggedin = useIsLoggedIn()
+  const isloggedIn = useIsLoggedIn()
   const navogate = useNavigate()
-  const id = JSON.parse(Cookies.get('user')).id
-  console.log(id)
   const [formData, setFormData] = useState({
     weight: '',
     date: '',
@@ -20,8 +20,8 @@ const SchedulePickup = () => {
     landmark: '',
   });
 
-  useEffect(()=>{
-    if(!isloggedin){
+  useEffect(() => {
+    if (!isloggedIn) {
       navogate('/login')
     }
   })
@@ -48,25 +48,57 @@ const SchedulePickup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (validateForm()) {
+      const id = JSON.parse(Cookies.get('user'))?.id
+      console.log(id)
       try {
-        const response = await axios.post(`${URL}/api/v1/urbanscrapman/shedule/sheduleapickup` , {
-          weight : formData.weight,
-          pickUpDate : formData.date,
-          timeSlot : formData.timeSlot,
-          pinCode : formData.pincode,
-          landMark : formData.landmark,
-          address : formData.address,
-          createdBy : id,
+        const response = await axios.post(`${URL}/api/v1/urbanscrapman/shedule/sheduleapickup`, {
+          weight: formData.weight,
+          pickUpDate: formData.date,
+          timeSlot: formData.timeSlot,
+          pinCode: formData.pincode,
+          landMark: formData.landmark,
+          address: formData.address,
+          createdBy: id,
         })
         if (response.status == 201) {
-          alert('Pickup Scheduled Successfully!');
+          toast.success('Pickup Sheduled Sucessfully', {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            transition: Bounce,
+          })
           setFormData({ weight: '', date: '', timeSlot: '', address: '', pincode: '', landmark: '' });
         } else {
-          alert('Failed to schedule pickup. Try again.');
+          toast.error('Failed to schedule pickup. Try again', {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            transition: Bounce,
+          })
         }
       } catch (error) {
         console.error('Error:', error);
-        alert('Failed to schedule pickup. Try again.');
+        toast.error('Failed to schedule pickup. Try again', {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Bounce,
+        })
       }
     }
   };
@@ -74,7 +106,7 @@ const SchedulePickup = () => {
   return (
     <div className="md:h-[80vh] lg:h-[100vh] flex justify-center items-center p-4 mb-5 mt-[20vh]">
       <div className="bg-white rounded-3xl p-8 flex flex-col md:flex-row w-full md:h-full shadow-card">
-        
+
         <div className="h-[100%] md:w-1/2 p-4">
           <h2 className="text-3xl font-semibold text-green-600 mb-6 text-center">Schedule a Pickup</h2>
           <form onSubmit={handleSubmit} className="space-y-4">
@@ -173,7 +205,7 @@ const SchedulePickup = () => {
           </form>
         </div>
 
-        
+
         <div className="md:h-full h-fit md:w-[50%] flex justify-center items-center">
           <img
             src={phone}

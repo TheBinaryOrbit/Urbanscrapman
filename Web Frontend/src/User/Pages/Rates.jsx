@@ -18,7 +18,7 @@ const Rates = () => {
     }, []);
     return (
         <div className='w-full h-fit  py-10 pt-36  p-10'>
-            <h1 className="w-full text-center md:text-left sm:px-16 font-palyfair text-2xl md:text-3xl lg:text-3xl py-3 font-bold text-green-600" data-aos="fade-up">Scrab Rates</h1>
+            <h1 className="w-full text-center md:text-left sm:px-16 font-palyfair text-2xl md:text-3xl lg:text-3xl py-3 font-bold text-green-600" data-aos="fade-up">Scrap Rates</h1>
             <div className='w-full h-fit  py-10 grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5'>
                 {
                     data.map((item, index) => <Card key={index} name={item.name} price={item.price} unit={item.unit} icon={item.icon} />)

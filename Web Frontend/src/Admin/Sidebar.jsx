@@ -4,6 +4,7 @@ import { BiMenuAltRight } from 'react-icons/bi';
 import Cookies from 'js-cookie';
 import { useNavigate } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
+import { toast , Bounce } from 'react-toastify';
 
 const Sidebar = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -12,8 +13,18 @@ const Sidebar = () => {
     const handleLogout = () => {
         Cookies.remove('user');
         Cookies.set('isloggedIn', false);
-        alert('Logout successful');
         navigate('/');
+        return toast.success('Sucessfully Logout', {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            transition: Bounce,
+        })
     };
 
     const toggleSidebar = () => {

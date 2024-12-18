@@ -8,12 +8,11 @@ import Singup from './Auth/Singup'
 import User from './Outlets/User'
 import { useEffect, useState } from 'react'
 import { Authcontext } from './Auth/Authcontext'
-import { ToastContainer } from 'react-toastify'
+import { ToastContainer , Bounce } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 import Cookies from 'js-cookie'
 import useIsAdmin from './Hooks/useIsAdmin'
 import Shedules from './User/Pages/Shedules'
-import Pickup from './User/Pages/Pickup'
 import Admin from './Outlets/Admin'
 import AllShedules from './Admin/AllShedules'
 import Scrabs from './Admin/Scrabs'
@@ -26,33 +25,33 @@ function App() {
   const IsAdmin = useIsAdmin()
   const [isLogedIn, setIsLogedIn] = useState(Cookies.get('isloggedIn') || false)
 
-  useEffect(()=>{
+  useEffect(() => {
     console.log(IsAdmin)
     setIsLogedIn(Cookies.get('isloggedIn') || false)
-  },[isLogedIn])
+  }, [isLogedIn])
 
   return (
-    <Authcontext.Provider value={{isLogedIn , setIsLogedIn}}>
-      <ToastContainer
-        position="top-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        draggable
-        pauseOnHover
-        theme="light"
-        />
-      <ToastContainer />
+    <Authcontext.Provider value={{ isLogedIn, setIsLogedIn }}>
       <Router>
-      <ScrollToTop />
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick={false}
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+          transition={Bounce}
+        />
+        <ScrollToTop />
         <Routes>
           <Route path='/' element={<User />}>
             <Route path='/' element={<Home />} />
             <Route path='/rates' element={<Rates />} />
             <Route path='/shedules' element={<Shedules />} />
-            {/* <Route path='/pickups' element={<Pickup />} /> */}
             <Route path='/faq' element={<Faq />} />
             <Route path='*' element={<NotFound />} />
           </Route>

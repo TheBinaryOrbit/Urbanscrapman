@@ -6,6 +6,7 @@ import { TbLoader3 } from 'react-icons/tb';
 import axios from 'axios';
 import useIsAdmin from '../Hooks/useIsAdmin';
 import URL from '../Url';
+import { toast , Bounce } from 'react-toastify';
 
 const AllShedules = () => {
   const [isprocessing, setIsprocessing] = useState(false)
@@ -36,12 +37,32 @@ const AllShedules = () => {
         setChanged(!chnaged);
         setIsOpen(!isOpen)
         setIsprocessing(false);
-        alert('Marked As Completed');
+        return toast.success('Marked Completed', {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Bounce,
+      })
       }
     } catch (e) {
       setIsprocessing(false);
       console.log(e);
-      alert('Something Went Wrong');
+      return toast.success('Unable To Update Status', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+    })
     }
   };
 

@@ -6,8 +6,9 @@ import { RxCross2 } from 'react-icons/rx';
 import { TbLoader3 } from 'react-icons/tb';
 import useIsAdmin from '../Hooks/useIsAdmin';
 import URL from '../Url';
+import { toast, Bounce } from 'react-toastify';
 
-const Scrabs = () => {
+const scraps = () => {
     const [isprocessing, setIsprocessing] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
     const [action, setAction] = useState('none');
@@ -15,7 +16,7 @@ const Scrabs = () => {
     const [data, setData] = useState([]);
     const [error, setError] = useState(false);
     const [chnaged, setChanged] = useState(true);
-    const [scrabDetails, setScrabDetails] = useState({
+    const [scrapDetails, setscrapDetails] = useState({
         name: '',
         price: '',
         unit: '',
@@ -38,7 +39,7 @@ const Scrabs = () => {
 
     const handleopen = (action) => {
         if (isOpen) {
-            setScrabDetails({
+            setscrapDetails({
                 name: '',
                 price: '',
                 unit: '',
@@ -51,15 +52,26 @@ const Scrabs = () => {
 
     const handlechange = (e) => {
         const { name, value } = e.target;
-        setScrabDetails({ ...scrabDetails, [name]: value });
+        setscrapDetails({ ...scrapDetails, [name]: value });
     };
 
-    const handleAddScrab = async (e) => {
+    const handleAddscrap = async (e) => {
         e.preventDefault();
         setIsprocessing(true);
-        if (!scrabDetails.name || !scrabDetails.price || !scrabDetails.unit || !scrabDetails.icon) return alert('All Fields Are Required');
+        if (!scrapDetails.name || !scrapDetails.price || !scrapDetails.unit || !scrapDetails.icon)
+            return toast.error('All Fields Are Required', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce,
+            })
 
-        const details = { ...scrabDetails };
+        const details = { ...scrapDetails };
 
         try {
             const res = await axios.post(`${URL}/api/v1/urbanscrapman/scrab/addscrab`, details, {
@@ -70,22 +82,52 @@ const Scrabs = () => {
                 setChanged(!chnaged);
                 setIsOpen(false);
                 setIsprocessing(false);
-                alert('Scrab Added Successfully');
+                return toast.success('Scrap Added Sucessfully', {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                    transition: Bounce,
+                })
             }
         } catch (e) {
             setIsprocessing(false);
             console.log(e);
-            alert('Something Went Wrong');
+            return toast.error('Something Went Wrong', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce,
+            })
         }
     };
 
-    const handleUpdateScrab = async (e) => {
+    const handleUpdatescrap = async (e) => {
         e.preventDefault();
         setIsprocessing(true);
-        if (!scrabDetails.name || !scrabDetails.price || !scrabDetails.unit || !scrabDetails.icon) return alert('All Fields Are Required');
+        if (!scrapDetails.name || !scrapDetails.price || !scrapDetails.unit || !scrapDetails.icon) return toast.error('All Fields Are Required', {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            transition: Bounce,
+        })
 
         try {
-            const res = await axios.patch(`${URL}/api/v1/urbanscrapman/scrab/updatescrab/${activeId}`, scrabDetails, {
+            const res = await axios.patch(`${URL}/api/v1/urbanscrapman/scrab/updatescrab/${activeId}`, scrapDetails, {
                 headers: { "Authorization": "Bearer " + adminData.token }
             });
 
@@ -93,30 +135,50 @@ const Scrabs = () => {
                 setChanged(!chnaged);
                 setIsOpen(false);
                 setIsprocessing(false);
-                alert('Scrab Updated Successfully');
+                return toast.success('Scrap Updated Sucessfully', {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                    transition: Bounce,
+                })
             }
         } catch (e) {
             setIsprocessing(false);
             console.log(e);
-            alert('Something Went Wrong');
+            return toast.error('Something Went Wrong', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce,
+            })
         }
     };
-    
+
 
     return (
         <div className="flex flex-col lg:flex-row w-full">
             <aside className="w-full lg:w-64 bg-gray-100 p-4 flex justify-center items-center">
-                <h1 className="text-lg font-bold">Urban Scrabman</h1>
+                <h1 className="text-lg font-bold">Urban scrapman</h1>
             </aside>
 
             <main className="flex-1 bg-white p-4">
                 <header className="flex justify-between items-center mb-4">
-                    <h1 className="text-2xl font-bold text-gray-700">All Scrabs</h1>
+                    <h1 className="text-2xl font-bold text-gray-700">All scraps</h1>
                     <button
                         className="bg-green-600 flex items-center gap-2 text-white px-4 py-2 rounded-md"
-                        onClick={() => handleopen('Add Scrab')}
+                        onClick={() => handleopen('Add scrap')}
                     >
-                        <IoMdAdd size={24} /> Add Scrab
+                        <IoMdAdd size={24} /> Add scrap
                     </button>
                 </header>
 
@@ -137,18 +199,18 @@ const Scrabs = () => {
                                     <td colSpan="5" className="text-center py-4 text-red-500">Error Fetching Data</td>
                                 </tr>
                             ) : (
-                                data.map(scrab => (
-                                    <tr key={scrab._id} className="hover:bg-gray-50">
+                                data.map(scrap => (
+                                    <tr key={scrap._id} className="hover:bg-gray-50">
                                         <td className="py-2 px-4">
-                                            <img src={scrab.icon} alt={scrab.name} className="w-16 h-16 object-contain" />
+                                            <img src={scrap.icon} alt={scrap.name} className="w-16 h-16 object-contain" />
                                         </td>
-                                        <td className="py-2 px-4 capitalize">{scrab.name}</td>
-                                        <td className="py-2 px-4">₹ {scrab.price}</td>
-                                        <td className="py-2 px-4">{scrab.unit}</td>
+                                        <td className="py-2 px-4 capitalize">{scrap.name}</td>
+                                        <td className="py-2 px-4">₹ {scrap.price}</td>
+                                        <td className="py-2 px-4">{scrap.unit}</td>
                                         <td className="py-2 px-4">
                                             <button
                                                 className="bg-green-600 text-white px-3 py-1 rounded-md flex items-center gap-1"
-                                                onClick={() => { handleopen('Update Scrab'); setScrabDetails(scrab); setActiveId(scrab._id); }}
+                                                onClick={() => { handleopen('Update scrap'); setscrapDetails(scrap); setActiveId(scrap._id); }}
                                             >
                                                 <CiEdit /> Update
                                             </button>
@@ -171,13 +233,13 @@ const Scrabs = () => {
                         />
                         <h2 className="text-xl font-semibold mb-4 text-center">{action}</h2>
                         <form className="flex flex-col gap-4">
-                            <input type="text" name="name" placeholder="Name" value={scrabDetails.name} onChange={handlechange} className="border p-2 rounded" />
-                            <input type="text" name="price" placeholder="Price" value={scrabDetails.price} onChange={handlechange} className="border p-2 rounded" />
-                            <input type="text" name="unit" placeholder="Unit" value={scrabDetails.unit} onChange={handlechange} className="border p-2 rounded" />
-                            <input type="text" name="icon" placeholder="Icon URL" value={scrabDetails.icon} onChange={handlechange} className="border p-2 rounded" />
+                            <input type="text" name="name" placeholder="Name" value={scrapDetails.name} onChange={handlechange} className="border p-2 rounded" />
+                            <input type="text" name="price" placeholder="Price" value={scrapDetails.price} onChange={handlechange} className="border p-2 rounded" />
+                            <input type="text" name="unit" placeholder="Unit" value={scrapDetails.unit} onChange={handlechange} className="border p-2 rounded" />
+                            <input type="text" name="icon" placeholder="Icon URL" value={scrapDetails.icon} onChange={handlechange} className="border p-2 rounded" />
                             <button
                                 className="bg-green-600 text-white py-2 rounded-md"
-                                onClick={(e) => action === 'Update Scrab' ? handleUpdateScrab(e) : handleAddScrab(e)}
+                                onClick={(e) => action === 'Update scrap' ? handleUpdatescrap(e) : handleAddscrap(e)}
                             >
                                 {isprocessing ? <TbLoader3 className="animate-spin mx-auto" /> : action}
                             </button>
@@ -189,4 +251,4 @@ const Scrabs = () => {
     );
 };
 
-export default Scrabs;
+export default scraps;

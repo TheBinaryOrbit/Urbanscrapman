@@ -11,6 +11,7 @@ import useIsAdmin from '../../../Hooks/useIsAdmin'
 import { HashLink } from 'react-router-hash-link';
 import { FaChartSimple } from "react-icons/fa6";
 import { GrContact } from "react-icons/gr";
+import { toast , Bounce } from 'react-toastify';
 
 
 
@@ -24,8 +25,18 @@ const Navbar = () => {
     const handleLogout = () => {
         Cookies.remove('user');
         Cookies.set('isloggedIn', false);
-        alert('logout sucessfull')
         navigate('/')
+        return toast.success('Logout Sucessfully', {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            transition: Bounce,
+        })
     }
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
@@ -178,7 +189,7 @@ const Navbar = () => {
                                                                     </div>
                                                                 </p>
                                                             </li>
-                                                            
+
                                                         </ul> :
                                                         ""
                                                 }

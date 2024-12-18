@@ -46,7 +46,7 @@ const Login = () => {
     if (!checkPhone(details.phoneNumber)) {
       return toast.error('Enter A valid Phone number', {
         position: "top-right",
-        autoClose: 5000,
+        autoClose: 1000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
@@ -65,18 +65,17 @@ const Login = () => {
         Cookies.set('isloggedIn', true, { path: '/', expires: 30 });
         Cookies.set('user', JSON.stringify(res.data), { path: '/', expires: 30 });
         navigate('/')
-        alert('Looged in SucessFull')
-        // return toast.success('Sucessfully Loggedin', {
-        //   position: "top-right",
-        //   autoClose: 5000,
-        //   hideProgressBar: false,
-        //   closeOnClick: true,
-        //   pauseOnHover: true,
-        //   draggable: true,
-        //   progress: undefined,
-        //   theme: "light",
-        //   transition: Bounce,
-        //   });
+        return toast.success('Account Created SucessFully', {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Bounce,
+        })
       }
       else {
         return toast.error('Invalid Crentitial', {
