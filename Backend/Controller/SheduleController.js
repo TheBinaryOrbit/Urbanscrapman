@@ -2,7 +2,6 @@ import { shedule } from "../Modal/Shedule.js";
 
 export const CreateShedule = async (req, res) => {
     try {
-        console.log(req.body)
         if (!req.body || !req.body.weight || !req.body.pickUpDate || !req.body.timeSlot || !req.body.address || !req.body.pinCode || !req.body.landMark) return res.status(400).json({ "error": "All fields are required" });
         const result = await shedule.create(req.body);
 
@@ -30,14 +29,13 @@ export const UpdateStatus = async (req, res) => {
 
 export const getAllShedules = async (req, res) => {
     try {
-        console.log(req.query)
         let result = []
         if (req.query.option == 'all') {
-            console.log('all')
+            
             result = await shedule.find({}).limit(req.query.limit).skip((+req.query.page - 1) * (+req.query.limit)).sort({ createdAt: -1 }).populate('createdBy');
         }
         else {
-            console.log('options')
+            
             result = await shedule.find({ status: req.query.option }).limit(req.query.limit).skip((+req.query.page - 1) * (+req.query.limit)).sort({ createdAt: -1 }).populate('createdBy');
         }
         if (!result) return res.status(500).json({ "error": "Error in Getting Pickups" });
@@ -51,9 +49,9 @@ export const getAllShedules = async (req, res) => {
 
 export const getPersonalShedule = async (req, res) => {
     try {
-        console.log(req.params.id)
+        
         const result = await shedule.find({ createdBy: req.params.id });
-        console.log(result)
+        
         if (!result) return res.status(500).json({ "error": "Error in Getting Pickups" });
         return res.status(200).json(result);
     } catch (e) {

@@ -57,7 +57,7 @@ const Singup = () => {
     
         try{
           const res = await axios.post(`${URL}/api/v1/urbanscrapman/user/singup` , details)
-          console.log(res)
+          
           if(res.status == 201 ){
             navigate('/login')
             return toast.success('Account Created SucessFully', {

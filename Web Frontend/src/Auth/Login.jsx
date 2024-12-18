@@ -59,7 +59,7 @@ const Login = () => {
 
     try {
       const res = await axios.post(`${URL}/api/v1/urbanscrapman/user/login`, details)
-      console.log(res)
+      
       if (res.status === 200) {
         setIsLogedIn(true)
         Cookies.set('isloggedIn', true, { path: '/', expires: 30 });

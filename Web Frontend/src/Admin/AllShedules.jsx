@@ -89,7 +89,7 @@ const AllShedules = () => {
         const res = await axios.get(`${URL}/api/v1/urbanscrapman/shedule/getstatics`, {
           headers: { "Authorization": "Bearer " + adminData.token }
         });
-        console.log(res.data);
+        
         setData(res.data)
       } catch (e) {
         setError(true);

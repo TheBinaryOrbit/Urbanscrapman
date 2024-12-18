@@ -2,7 +2,7 @@ import { scrab } from "../Modal/Scrab.js";
 
 export const addscrab = async (req,res)=>{
     try{
-        console.log(req.body)
+        
         if(!req.body || !req.body.name ||!req.body.icon ||!req.body.price ||!req.body.unit) return res.status(400).json({"error" :  "All fields are required"});
         const result = await scrab.create(req.body);
 
@@ -31,10 +31,10 @@ export const UpdateScrabData = async (req,res)=>{
 
 export const getRates = async (req,res)=>{
     try{
-        console.log("getting scrabs")
+        
         const result = await scrab.find({});
         if(!result) return res.status(500).json({ "error"  : "Error in Getting Pickups"});
-        console.log(result)
+        
         return res.status(200).json(result);
     }catch(e){
         console.log(e)
