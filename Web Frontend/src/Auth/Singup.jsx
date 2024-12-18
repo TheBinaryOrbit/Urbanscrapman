@@ -103,8 +103,8 @@ const Singup = () => {
 
 
     return (
-        <div className='w-full h-[100vh]  bg-pink-300 flex flex-col md:flex-row justify-between items-center'>
-              <div className='md:w-[40%] lg:w-[50%] md:h-[100%] h-[50%] w-[100%] bg-green-600'>
+        <div className='w-full h-[100vh]   flex flex-col md:flex-row justify-between items-center'>
+              <div className='md:w-[40%] lg:w-[50%] md:h-[100%] h-[50%] w-[100%]'>
               <img src={image} alt=""  className='w-full h-full object-cover'/>
               </div>
               <form className='md:w-[60%] lg:w-[50%] md:h-[100%] h-fit w-[100%] bg-white flex justify-center items-center flex-col p-5' onSubmit={(e)=> handlelogin(e)}>
