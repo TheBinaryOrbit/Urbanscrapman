@@ -11,7 +11,7 @@ import useIsAdmin from '../../../Hooks/useIsAdmin'
 import { HashLink } from 'react-router-hash-link';
 import { FaChartSimple } from "react-icons/fa6";
 import { GrContact } from "react-icons/gr";
-import { toast , Bounce } from 'react-toastify';
+import { toast, Bounce } from 'react-toastify';
 
 
 
@@ -41,6 +41,11 @@ const Navbar = () => {
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
     };
+
+    const toggleBoth = () =>{
+        setIsMenuOpen(!isMenuOpen);
+        setIsOptionsOpen(!isOptionsOpen)
+    }
     return (
         <nav className="py-1 transition-all duration-500 w-[90%] mx-auto fixed top-5 left-[50%] bg-[#FFFFFFDD] border-2 border-gray-300 translate-x-[-50%] rounded-2xl z-50">
             <div className="px-4 sm:px-6 lg:px-8">
@@ -82,7 +87,7 @@ const Navbar = () => {
                                 <NavLink
                                     to={'/'}
                                     className="nav-link my-3 block lg:mr-6 md:my-0 lg:text-left text-center font-medium"
-                                    onClick={() => isMenuOpen ? toggleMenu : ""}
+                                    onClick={() => isMenuOpen ? toggleMenu() : ""}
                                 >
                                     Home
                                 </NavLink>
@@ -91,7 +96,7 @@ const Navbar = () => {
                                 <NavLink
                                     to={'/rates'}
                                     className="nav-link my-3 block lg:mr-6 md:my-0 lg:text-left text-center font-medium"
-                                    onClick={() => isMenuOpen ? toggleMenu : ""}
+                                    onClick={() => isMenuOpen ? toggleMenu() : ""}
                                 >
                                     Rates
                                 </NavLink>
@@ -122,7 +127,7 @@ const Navbar = () => {
                                                                         <NavLink
                                                                             to={'/admin/shedule'}
                                                                             className="nav-link  lg:mr-6 my-3 md:my-0 lg:text-left text-center font-medium flex justify-center items-center gap-2 w-fit"
-
+                                                                            onClick={() => isMenuOpen ? toggleBoth() : ""}
                                                                         >
                                                                             <div className='h-[100%] translate-y-[1px]'>
                                                                                 <MdOutlineDashboardCustomize size={18} />
@@ -139,6 +144,7 @@ const Navbar = () => {
                                                                 <HashLink
                                                                     to={'/#about'}
                                                                     className="nav-link  lg:mr-6 my-3 md:my-0 lg:text-left text-center font-medium flex justify-center items-center gap-2 w-fit"
+                                                                    onClick={() => isMenuOpen ? toggleBoth() : ""}
 
                                                                 >
                                                                     <div className='h-[100%] translate-y-[1px]'>
@@ -153,6 +159,7 @@ const Navbar = () => {
                                                                 <HashLink
                                                                     to={'/#contact'}
                                                                     className="nav-link  lg:mr-6 my-3 md:my-0 lg:text-left text-center font-medium flex justify-center items-center gap-2 w-fit"
+                                                                    onClick={() => isMenuOpen ? toggleBoth() : ""}
 
                                                                 >
                                                                     <div className='h-[100%] translate-y-[1px]'>
@@ -167,6 +174,7 @@ const Navbar = () => {
                                                                 <HashLink
                                                                     to={'/#shedules'}
                                                                     className="nav-link  lg:mr-6 my-3 md:my-0 lg:text-left text-center font-medium flex justify-center items-center gap-2  w-fit"
+                                                                    onClick={() => isMenuOpen ? toggleBoth() : ""}
                                                                 >
                                                                     <div className='h-[100%] translate-y-[1px]'>
                                                                         <CiDeliveryTruck size={18} />

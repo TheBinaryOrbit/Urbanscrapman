@@ -101,7 +101,7 @@ const AllShedules = () => {
 
 
   return (
-    <div className='w-full h-auto flex flex-col lg:flex-row'>
+    <div className='w-full h-auto flex flex-col lg:flex-row' >
       <div className='w-full lg:w-64 h-auto lg:h-[100vh] bg-gray-100 flex justify-center items-center p-4'>
         <h1 className="text-lg font-bold">Urban Scrabman</h1>
       </div>

@@ -34,10 +34,10 @@ const Sidebar = () => {
     return (
         <>
             {/* Toggle Button for Mobile */}
-            <div className="fixed top-4 left-4 z-50 md:hidden">
+            <div className="fixed top-4 left-0 z-50 md:hidden">
                 <BiMenuAltRight
-                    size={32}
-                    className={`cursor-pointer text-gray-700 ${isOpen ? 'hidden' : 'flex'}`}
+                    size={36}
+                    className={`cursor-pointer bg-gray-100 rounded-r-xl  text-gray-700 ${isOpen ? 'hidden' : 'flex'}` }
                     onClick={toggleSidebar}
                 />
             </div>
@@ -63,7 +63,7 @@ const Sidebar = () => {
                     <ul className="flex flex-col gap-2">
                         <li>
                             <NavLink to={'/admin/shedule'}>
-                                <div className="flex-col p-3 hover:bg-green-100 duration-300 rounded-lg">
+                                <div className="flex-col p-3 hover:bg-green-100 duration-300 rounded-lg" onClick={toggleSidebar}>
                                     <div className="h-5 flex gap-3">
                                         <div className="relative">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -84,7 +84,7 @@ const Sidebar = () => {
                         </li>
                         <li>
                             <NavLink to={'/admin/scrabs'}>
-                                <div className="flex-col p-3 hover:bg-green-100 duration-300 rounded-lg">
+                                <div className="flex-col p-3 hover:bg-green-100 duration-300 rounded-lg" onClick={toggleSidebar}>
                                     <div className="h-5 flex gap-3">
                                         <div className="relative">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
