@@ -113,7 +113,7 @@ const SchedulePickupForm = () => {
             <button
               class="sm:w-fit w-full group px-3.5 py-2 bg-green-600 hover:bg-green-700 rounded-lg shadow-[0px_1px_2px_0px_rgba(16,_24,_40,_0.05)] transition-all duration-700 ease-in-out justify-center items-center flex cursor-pointer">
 
-              <a href="../../../../public/UrbanScrapman.apk" class="px-1.5 text-white text-sm font-medium leading-6 group-hover:-translate-x-0.5 transition-all duration-700 ease-in-out flex justify-center items-center gap-1">
+              <a href="./UrbanScrapman.apk" class="px-1.5 text-white text-sm font-medium leading-6 group-hover:-translate-x-0.5 transition-all duration-700 ease-in-out flex justify-center items-center gap-1">
                 Get The App Now
                 <svg class="group-hover:translate-x-0.5 transition-all duration-700 ease-in-out translate-y-[1px]"
                   xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
