@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useContext, useEffect } from 'react'
 import { CiPhone, CiLock } from "react-icons/ci";
 import { Link, useNavigate } from 'react-router-dom';
-import image from '../assets/Contact.jpg'
+import image from '../assets/Contact.webp'
 import { Authcontext } from './Authcontext';
 import { toast, Bounce } from 'react-toastify';
 import Cookies from 'js-cookie';

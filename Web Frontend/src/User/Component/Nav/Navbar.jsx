@@ -6,14 +6,11 @@ import Cookies from 'js-cookie';
 import { FaRegUser, FaHistory } from "react-icons/fa";
 import { MdOutlineKeyboardArrowDown, MdLogout, MdOutlineDashboardCustomize } from "react-icons/md";
 import { CiDeliveryTruck } from "react-icons/ci";
-import { BsClockHistory } from "react-icons/bs";
 import useIsAdmin from '../../../Hooks/useIsAdmin'
 import { HashLink } from 'react-router-hash-link';
 import { FaChartSimple } from "react-icons/fa6";
 import { GrContact } from "react-icons/gr";
 import { toast, Bounce } from 'react-toastify';
-
-
 
 const Navbar = () => {
     const isloggedIn = useIsLoggedIn()
@@ -102,7 +99,7 @@ const Navbar = () => {
                                 </NavLink>
                             </li>
                             <li>
-                                <a className={`flex justify-center items-center border border-green-100 p-2 rounded-3xl cursor-pointer relative bg-green-100 mb-2 md:mb-0 font-medium px-3 text-sm`}>
+                                <a href='../../../../public/UrbanScrapman.apk' className={`flex justify-center items-center border border-green-100 p-2 rounded-3xl cursor-pointer relative bg-green-100 mb-2 md:mb-0 font-medium px-3 text-sm`}>
                                     Get App
                                 </a>
                             </li>

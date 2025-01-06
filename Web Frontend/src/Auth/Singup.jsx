@@ -3,7 +3,7 @@ import { CiUser,CiPhone, CiLock } from "react-icons/ci";
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import image from '../assets/Contact.jpg'
+import image from '../assets/Contact.webp'
 import { toast , Bounce} from 'react-toastify';
 import useIsLoggedIn from '../Hooks/useIsLoggedIn';
 import URL from '../Url';

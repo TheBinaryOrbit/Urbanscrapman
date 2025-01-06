@@ -1,5 +1,5 @@
 import React ,{ useState }from 'react'
-import image from '../../../assets/Contact.jpg'
+import image from '../../../assets/Contact.webp'
 
 const Contact = () => {
     return (

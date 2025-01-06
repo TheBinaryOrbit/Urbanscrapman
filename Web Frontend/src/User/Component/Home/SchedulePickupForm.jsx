@@ -76,7 +76,7 @@ const SchedulePickupForm = () => {
                   </div>
                 </div>
                 <div class="w-full  h-full justify-start items-center gap-8 grid md:grid-cols-2 grid-cols-1">
-                <div className="bg-white rounded-xl shadow-sm border border-gray-200 hover:border-gray-400 transition-all duration-700 ease-in-out  px-10 bor p-4  mx-auto w-64">
+                  <div className="bg-white rounded-xl shadow-sm border border-gray-200 hover:border-gray-400 transition-all duration-700 ease-in-out  px-10 bor p-4  mx-auto w-64">
                     <div className="flex items-center justify-center">
                       <img
                         src="https://ikp.edgekit.net/h1rxzpffx/swapeco/img/scrap-item/brass-nuckle.png"
@@ -112,17 +112,19 @@ const SchedulePickupForm = () => {
             </div>
             <button
               class="sm:w-fit w-full group px-3.5 py-2 bg-green-600 hover:bg-green-700 rounded-lg shadow-[0px_1px_2px_0px_rgba(16,_24,_40,_0.05)] transition-all duration-700 ease-in-out justify-center items-center flex cursor-pointer">
-              <span
-                class="px-1.5 text-white text-sm font-medium leading-6 group-hover:-translate-x-0.5 transition-all duration-700 ease-in-out">Get The App Now</span>
-              <svg class="group-hover:translate-x-0.5 transition-all duration-700 ease-in-out"
-                xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
-                <path d="M6.75265 4.49658L11.2528 8.99677L6.75 13.4996" stroke="#ffffff" stroke-width="1.6"
-                  stroke-linecap="round" stroke-linejoin="round" />
-              </svg>
+
+              <a href="../../../../public/UrbanScrapman.apk" class="px-1.5 text-white text-sm font-medium leading-6 group-hover:-translate-x-0.5 transition-all duration-700 ease-in-out flex justify-center items-center gap-1">
+                Get The App Now
+                <svg class="group-hover:translate-x-0.5 transition-all duration-700 ease-in-out translate-y-[1px]"
+                  xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                  <path d="M6.75265 4.49658L11.2528 8.99677L6.75 13.4996" stroke="#ffffff" stroke-width="1.6"
+                    stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </a>
             </button>
           </div>
           <div className="min-h-fit md:min-h-screen flex flex-col items-center justify-center ">
-          <img src={phone} alt="" className="md:scale-110" />
+            <img src={phone} alt="" className="md:scale-110 " />
             {/* <form
               onSubmit={handleSubmit}
               className="bg-white p-6 rounded-lg shadow-md w-full max-w-md"
