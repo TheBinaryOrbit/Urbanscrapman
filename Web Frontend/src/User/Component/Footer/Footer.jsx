@@ -36,8 +36,8 @@ const Footer = () => {
                             <h4 class="text-lg text-gray-900 font-medium mb-7">Support</h4>
                             <ul class="text-sm  transition-all duration-500">
                                 <li class="mb-6"><Link to={'/'} class="text-gray-600 hover:text-gray-900">Customer Support</Link></li>
-                                <li class="mb-6"><Link to={'/'} class="text-gray-600 hover:text-gray-900">Terms & Conditions</Link></li>
-                                <li class="mb-6"><Link to={'/'} class="text-gray-600 hover:text-gray-900">Privacy Policy</Link></li>
+                                <li class="mb-6"><Link to={'/tandc'} class="text-gray-600 hover:text-gray-900">Terms & Conditions</Link></li>
+                                <li class="mb-6"><Link to={'/privacy'} class="text-gray-600 hover:text-gray-900">Privacy Policy</Link></li>
                             </ul>
                         </div>
                     </div>

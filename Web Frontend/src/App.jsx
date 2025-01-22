@@ -18,6 +18,8 @@ import AllShedules from './Admin/AllShedules'
 import Scrabs from './Admin/Scrabs'
 import ScrollToTop from './User/Component/ScrollToTop/ScrollToTop'
 import Faq from './User/Pages/Faq'
+import TandC from './User/Pages/TandC'
+import Privacy from './User/Pages/Privacypolicy'
 
 
 
@@ -52,6 +54,8 @@ function App() {
             <Route path='/' element={<Home />} />
             <Route path='/rates' element={<Rates />} />
             <Route path='/faq' element={<Faq />} />
+            <Route path='/tandc' element={<TandC />} />
+            <Route path='/privacy' element={<Privacy />} />
             <Route path='*' element={<NotFound />} />
           </Route>
           <Route path='login' element={<Login />} />
