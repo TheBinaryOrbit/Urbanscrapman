@@ -44,10 +44,7 @@ const Footer = () => {
 
                     <div class="py-7 border-t border-gray-700">
                         <div class="flex items-center justify-center flex-col lg:justify-between lg:flex-row">
-                            <span class="text-sm text-gray-500">@Feuberro Waste Management 2024, All rights reserved.</span>
-                            <div class="flex mt-4 space-x-4 sm:justify-center lg:mt-0 ">
-                                <p class="text-sm text-gray-700 font-bold flex justify-center items-center gap-3">Developed By <a href="https://xcentic.in" target='blank' className='hover:underline flex justify-center tracking-[2px] items-center gap-1'>XCENTIC</a></p>
-                            </div>
+                            <span class="text-sm text-gray-500">@Feuberro Waste Management  Private Limited, All rights reserved.</span>
                         </div>
                     </div>
                 </div>
