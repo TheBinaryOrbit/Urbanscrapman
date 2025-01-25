@@ -24,18 +24,18 @@ export const handleSingUp = async (req, res) => {
 
 export const handleLogin = async (req, res) => {
     try {
-        
-        if (!req.body || !req.body.phoneNumber || !req.body.password) return res.status(400).json({ error: "All fields Are required" });
-        const result = await user.matchpassword(req.body.phoneNumber, req.body.password);
+        console.log(req.body)
+        if (!req.body || !req.body.phoneNumber || !req.body.password) return res.status(400).json({ "error": "All fields Are required" });
+        const result = await user.matchpassword(req.body.phoneNumber, req.body.password , req);
 
-        if (!result) return res.status(404).json({error : "User not Found"})
+        if (!result) return res.status(404).json({"error" : "User not Found"})
 
         const token = generateToken(result.phoneNumber, result._id, result.role); // Generatin the Jwt tokern
 
         return res.status(200).json({ token: token, name: result.name, phoneNumber: result.phoneNumber, role: result.role, id: result._id});
     } catch (e) {
         console.log(e);
-        return res.status(400).json({ error: e });
+        return res.status(400).json({ "error": e });
     }
 }
 
@@ -49,6 +49,7 @@ export const resetpassword =async (req, res) => {
         const result = await user.resetpassword(req.body.phoneNumber , req.body.newPassword)
         if(result == "Password Chnaged Sucessfully") return res.status(200).json({"Message" : "Password Changed Sucesfully"});
     }catch(e){
+        console.log("hello")
         console.log(e)
         return res.status(500).json({"error" : "Someting Went Wrong"})
     }

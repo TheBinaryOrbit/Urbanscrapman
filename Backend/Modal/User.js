@@ -39,17 +39,17 @@ UserScheam.pre('save', function (next) {
     next()
 })
 
-UserScheam.static('matchpassword', async function ( phoneNumber, password) {
-    const admin = await this.findOne({ phoneNumber: phoneNumber })
+UserScheam.static('matchpassword', async function ( phoneNumber, password , req) {
+    const user = await this.findOne({ phoneNumber: phoneNumber })
 
-    if (!admin) throw 'Incorrect Phone Numbaer'
+    if (!user) throw "User Not Found"
 
-    const generatedPassword = createHmac('sha256', admin.salt)
+    const generatedPassword = createHmac('sha256', user.salt)
         .update(password)
         .digest('hex');
 
-    if (generatedPassword !== admin.password) throw "Incorrect password";
-    return admin
+    if (generatedPassword !== user.password) throw "Incorrect password";
+    return user
 })
 
 

@@ -8,7 +8,7 @@ import { route as UserRouter } from './Router/UserRouter.js'
 const PORT = process.env.PORT
 
 const app = express()
-
+ConnectDB(process.env.DBURL)
 const corsOption  = {
     "origin": "*",
     "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
@@ -30,9 +30,6 @@ app.use('/api/v1/urbanscrapman/shedule' , SheduleRouter);
 app.use('/api/v1/urbanscrapman/scrab' , ScrabRouter);
 app.use('/api/v1/urbanscrapman/user' , UserRouter);
 
-
-
-ConnectDB(process.env.DBURL)
 
 app.listen( PORT ,()=>{
     console.log(`Server Started ${PORT}`)
