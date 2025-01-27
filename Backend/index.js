@@ -5,6 +5,7 @@ import { ConnectDB } from './Database/Dbconnection.js'
 import { route as SheduleRouter } from './Router/SheduleRouter.js'
 import { route as ScrabRouter } from './Router/Scrabrouter.js'
 import { route as UserRouter } from './Router/UserRouter.js'
+import { route as OtpRouter } from './Router/Otprouter.js'
 const PORT = process.env.PORT
 
 const app = express()
@@ -29,6 +30,7 @@ app.use(express.json());
 app.use('/api/v1/urbanscrapman/shedule' , SheduleRouter);
 app.use('/api/v1/urbanscrapman/scrab' , ScrabRouter);
 app.use('/api/v1/urbanscrapman/user' , UserRouter);
+app.use('/api/v1/urbanscrapman/otp' , OtpRouter);
 
 
 app.listen( PORT ,()=>{

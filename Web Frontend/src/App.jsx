@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Rates from './User/Pages/Rates'
 import Login from './Auth/Login'
 import NotFound from './User/Pages/NotFound'
-import Singup from './Auth/Singup'
 import User from './Outlets/User'
 import { useEffect, useState } from 'react'
 import { Authcontext } from './Auth/Authcontext'
@@ -12,7 +11,6 @@ import { ToastContainer , Bounce } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 import Cookies from 'js-cookie'
 import useIsAdmin from './Hooks/useIsAdmin'
-import Shedules from './User/Pages/Shedules'
 import Admin from './Outlets/Admin'
 import AllShedules from './Admin/AllShedules'
 import Scrabs from './Admin/Scrabs'
@@ -59,7 +57,6 @@ function App() {
             <Route path='*' element={<NotFound />} />
           </Route>
           <Route path='login' element={<Login />} />
-          <Route path='singup' element={<Singup />} />
           <Route path='/admin' element={<Admin />}>
             <Route path='/admin/shedule' element={<AllShedules />} />
             <Route path='/admin/scrabs' element={<Scrabs />} />

@@ -2,7 +2,8 @@ import React from 'react'
 import logo from '../../../assets/logo.png'
 import { HashLink } from 'react-router-hash-link'
 import { Link } from 'react-router-dom'
-import { FaGithub } from 'react-icons/fa'
+import {  FaFacebook , FaInstagram , FaLinkedin , FaYoutube  } from "react-icons/fa";
+import { FaSquareXTwitter } from 'react-icons/fa6';
 
 const Footer = () => {
     return (
@@ -19,7 +20,7 @@ const Footer = () => {
                             <ul class="text-sm  transition-all duration-500">
                                 <li class="mb-6"><Link to={'/'} class="text-gray-600 hover:text-gray-900">Home</Link></li>
                                 <li class="mb-6"><Link to={'/login'} class="text-gray-600 hover:text-gray-900">Login</Link></li>
-                                <li class="mb-6"><Link to={'/singup'} class="text-gray-600 hover:text-gray-900">Singup</Link></li>
+                                {/* <li class="mb-6"><Link to={'/singup'} class="text-gray-600 hover:text-gray-900">Singup</Link></li> */}
                             </ul>
                         </div>
 
@@ -42,10 +43,15 @@ const Footer = () => {
                         </div>
                     </div>
 
-                    <div class="py-7 border-t border-gray-700">
-                        <div class="flex items-center justify-center flex-col lg:justify-between lg:flex-row">
-                            <span class="text-sm text-gray-500">@Feuberro Waste Management  Private Limited, All rights reserved.</span>
-                        </div>
+                    <div className='border-t-2 max-w-7xl mx-auto border-gray-200 py-5 flex justify-between items-center'>
+                        <p className=' text-gray-500 text-sm '>@Feuberro Waste Management  Private Limited, All rights reserved.</p>
+                        <ul className=' text-gray-500  flex gap-3 text-2xl space-x-2'>
+                            <li className=' cursor-pointer hover:text-gray-700'><a href="https://www.facebook.com/urbanscrapman" target='blank' > <FaFacebook /></a></li>
+                            <li className=' cursor-pointer hover:text-gray-700'><a href="https://x.com/urbanscrapman" target='blank'> <FaSquareXTwitter /></a></li>
+                            <li className=' cursor-pointer hover:text-gray-700'><a href="https://www.linkedin.com/showcase/urbanscrapman" target='blank'> <FaLinkedin /> </a></li>
+                            <li className=' cursor-pointer hover:text-gray-700'><a href="https://www.instagram.com/urbanscrapman/" target='blank'> <FaInstagram /></a></li>
+                            <li className=' cursor-pointer hover:text-gray-700'><a href="https://www.youtube.com/@UrbanScrapman" target='blank'> <FaYoutube /></a></li>
+                        </ul>
                     </div>
                 </div>
             </footer>

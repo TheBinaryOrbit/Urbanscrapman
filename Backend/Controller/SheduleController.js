@@ -96,8 +96,7 @@ export const getStatics = async (req,res) => {
                 }
             }
         ]);
-
-        // Restructure the response for easier consumption
+        
         const result = {
             totalSchedules: stats[0]?.totalSchedules[0]?.total || 0,
             totalCompleted: stats[0]?.totalCompleted[0]?.total || 0,
