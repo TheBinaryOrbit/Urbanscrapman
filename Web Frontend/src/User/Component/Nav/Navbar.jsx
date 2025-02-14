@@ -99,7 +99,7 @@ const Navbar = () => {
                                 </NavLink>
                             </li>
                             <li>
-                                <a href='./UrbanScrapman.apk' className={`flex justify-center items-center border border-green-100 p-2 rounded-3xl cursor-pointer relative bg-green-100 mb-2 md:mb-0 font-medium px-3 text-sm`}>
+                                <a href='https://play.google.com/store/apps/details?id=com.urbanscrapman' className={`flex justify-center items-center border border-green-100 p-2 rounded-3xl cursor-pointer relative bg-green-100 mb-2 md:mb-0 font-medium px-3 text-sm`}>
                                     Get App
                                 </a>
                             </li>
