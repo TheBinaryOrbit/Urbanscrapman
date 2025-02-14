@@ -29,17 +29,51 @@ export const UpdateStatus = async (req, res) => {
 
 export const getAllShedules = async (req, res) => {
     try {
-        let result = []
-        if (req.query.option == 'all') {
-            
-            result = await shedule.find({}).limit(req.query.limit).skip((+req.query.page - 1) * (+req.query.limit)).sort({ createdAt: -1 }).populate('createdBy');
+        const matchQuery = {};
+
+        if (req.query.option != 'all') {
+            matchQuery.status = req.query.option
         }
-        else {
-            
-            result = await shedule.find({ status: req.query.option }).limit(req.query.limit).skip((+req.query.page - 1) * (+req.query.limit)).sort({ createdAt: -1 }).populate('createdBy');
-        }
-        if (!result) return res.status(500).json({ "error": "Error in Getting Pickups" });
-        return res.status(200).json(result);
+
+
+        console.log(req.query);
+        console.log(matchQuery);
+
+        const result = await shedule.aggregate([
+            {
+                $match: matchQuery
+            },
+            {
+                $lookup : {
+                    from : "users",
+                    localField : 'createdBy',
+                    foreignField : "_id",
+                    as : 'createdBy'
+                }
+            },
+            {
+                $unwind : '$createdBy'
+            },
+            {
+                $facet: {
+                    metadata: [{ $count: "totalshedule" }],
+                    data: [
+                        { $sort: { createdAt: -1 } },
+                        { $skip: (+req.query.page - 1) * (+req.query.limit) },
+                        { $limit: +req.query.limit }
+                    ]
+                }
+            }
+        ]);
+
+        const shedules = result[0].data;
+        const totalSchedules = result[0].metadata.length > 0 ? result[0].metadata[0].totalshedule : 0;
+
+        if (!shedules) return res.status(500).json({ "error": "Error in Getting Pickups" });
+        return res.status(200).json({
+            totalSchedules: totalSchedules,
+            shedules: shedules
+        });
     } catch (e) {
         console.log(e)
         return res.status(500).json({ "error": "Error in Getting Pickups" });
@@ -49,9 +83,9 @@ export const getAllShedules = async (req, res) => {
 
 export const getPersonalShedule = async (req, res) => {
     try {
-        
+
         const result = await shedule.find({ createdBy: req.params.id });
-        
+
         if (!result) return res.status(500).json({ "error": "Error in Getting Pickups" });
         return res.status(200).json(result);
     } catch (e) {
@@ -60,7 +94,7 @@ export const getPersonalShedule = async (req, res) => {
     }
 }
 
-export const getStatics = async (req,res) => {
+export const getStatics = async (req, res) => {
     try {
         const todayStart = new Date();
         todayStart.setHours(0, 0, 0, 0);
@@ -96,7 +130,7 @@ export const getStatics = async (req,res) => {
                 }
             }
         ]);
-        
+
         const result = {
             totalSchedules: stats[0]?.totalSchedules[0]?.total || 0,
             totalCompleted: stats[0]?.totalCompleted[0]?.total || 0,

@@ -6,7 +6,7 @@ import { TbLoader3 } from 'react-icons/tb';
 import axios from 'axios';
 import useIsAdmin from '../Hooks/useIsAdmin';
 import URL from '../Url';
-import { toast , Bounce } from 'react-toastify';
+import { toast, Bounce } from 'react-toastify';
 
 const AllShedules = () => {
   const [isprocessing, setIsprocessing] = useState(false)
@@ -48,7 +48,7 @@ const AllShedules = () => {
           progress: undefined,
           theme: "light",
           transition: Bounce,
-      })
+        })
       }
     } catch (e) {
       setIsprocessing(false);
@@ -63,7 +63,7 @@ const AllShedules = () => {
         progress: undefined,
         theme: "light",
         transition: Bounce,
-    })
+      })
     }
   };
 
@@ -80,7 +80,7 @@ const AllShedules = () => {
       }
     };
     fetchdata();
-  }, [chnaged , limit , page , option]);
+  }, [chnaged, limit, page, option]);
 
 
   useEffect(() => {
@@ -89,7 +89,7 @@ const AllShedules = () => {
         const res = await axios.get(`${URL}/api/v1/urbanscrapman/shedule/getstatics`, {
           headers: { "Authorization": "Bearer " + adminData.token }
         });
-        
+
         setData(res.data)
       } catch (e) {
         setError(true);
@@ -108,7 +108,6 @@ const AllShedules = () => {
 
 
       <div className='w-full flex-1 bg-white'>
-
         <div className='w-full py-6 flex flex-wrap items-center justify-center gap-5 shadow-lg px-4'>
           <div className='w-full sm:w-64 h-28 bg-gradient-to-r from-red-500 to-red-400 rounded-2xl flex flex-col justify-center items-start p-5 shadow-md'>
             <h1 className='text-xl font-bold text-white tracking-[1px]'>Total Schedules</h1>
@@ -172,7 +171,7 @@ const AllShedules = () => {
                       </td>
                     </tr>
                   ) : (
-                    products?.map((product) => (
+                    products?.shedules?.map((product) => (
                       <tr key={product._id} className="border-b hover:bg-gray-50 transition">
                         <td className="py-3 px-4">{product.createdBy?.name}</td>
                         <td className="py-3 px-4">+91 {product.createdBy?.phoneNumber}</td>
@@ -187,7 +186,7 @@ const AllShedules = () => {
                           {product.status}
                         </td>
                         <td className="py-3 px-4 flex gap-2">
-                          <button className='bg-blue-600 p-2 rounded-md' onClick={() => handleopen(product)}><FaEye className='text-white' /></button>
+                          <button className='bg-green-600 p-2 rounded-md' onClick={() => handleopen(product)}><FaEye className='text-white' /></button>
                           <button className='bg-green-600 p-2 rounded-md' onClick={() => handleopen(product)}><CiEdit className='text-white' /></button>
                         </td>
                       </tr>
@@ -196,23 +195,33 @@ const AllShedules = () => {
                 }
               </tbody>
               <tfoot>
-
                 <tr>
-                  <th className="py-3 px-4" colSpan={7}>
-                    <nav aria-label="Page navigation example">
-                      <ul class="flex justify-between">
-                        <li>
-                          <a href="#" class={`flex items-center justify-center  px-3 h-10 ms-0 leading-tight text-green-600 bg-white border  border-green-300 rounded-lg hover:bg-green-100 hover:text-gray-700 ${page==1 ? 'hidden' : 'flex'}`} onClick={()=>  setPage(page-1)}>Previous</a>
-                        </li>
-
-                        <li>
-                          <a href="#" class={`flex items-center justify-center px-3 h-10 leading-tight text-green-600 bg-white border border-green-300 rounded-lg hover:bg-green-100 hover:text-gray-700 ${page == Math.ceil(4/limit) ? 'hidden' : 'flex'}`} onClick={()=> setPage(page+1)}>Next</a>
-                        </li>
-                      </ul>
-                    </nav>
-                  </th>
+                  <td className="py-4 px-6 text-center" colSpan={7}>
+                    <div className="flex justify-between items-center">
+                      <button
+                        className={`px-4 py-2 rounded-md border border-green-500 text-green-600 transition ${page === 1 ? "opacity-50 cursor-not-allowed" : "hover:bg-green-100"
+                          }`}
+                        disabled={page === 1}
+                        onClick={() => setPage(page - 1)}
+                      >
+                        Previous
+                      </button>
+                      <span className="text-gray-600 font-medium">
+                        Page {page} of {Math.ceil((+products.totalSchedules) / (+limit))}
+                      </span>
+                      <button
+                        className={`px-4 py-2 rounded-md border border-green-500 text-green-600 transition ${page >= Math.ceil((+products.totalSchedules) / (+limit))
+                          ? "opacity-50 cursor-not-allowed"
+                          : "hover:bg-green-100"
+                          }`}
+                        disabled={page >= Math.ceil((+products.totalSchedules) / (+limit))}
+                        onClick={() => setPage(page + 1)}
+                      >
+                        Next
+                      </button>
+                    </div>
+                  </td>
                 </tr>
-
               </tfoot>
             </table>
           </div>
